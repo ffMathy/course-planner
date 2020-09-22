@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Flex, Button, Text, useToast } from "@chakra-ui/core";
 import { colors as c } from "../../colors";
-import CourseField from "./CourseField";
-import SaveCancelButtonSet from "./SaveCancelButtonSet";
+import CourseField from "./editables/CourseField";
+import SaveCancelButtonSet from "./editables/SaveCancelButtonSet";
 import RegulationTable from "./RegulationTable";
 
 const TYPES = {

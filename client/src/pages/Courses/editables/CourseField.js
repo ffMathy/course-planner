@@ -1,5 +1,5 @@
 import React from "react";
-import { InlineEdit } from "../../components";
+import { InlineEdit } from "../../../components";
 import { Flex, Text, Box, Select } from "@chakra-ui/core";
 
 const points = [15, 20, 30];

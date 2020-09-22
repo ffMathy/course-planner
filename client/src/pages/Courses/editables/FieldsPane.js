@@ -1,14 +1,16 @@
 import React from "react";
 import { Flex } from '@chakra-ui/core';
+import { OptionsMenu } from "../../../components"
+import TextField from './TextField';
 
-const FieldsPane = ({ fields, isEditing }) => {
-    // const { ... } = fields;
+const FieldsPane = ({ fields, isEditing, onChange }) => {
+    const { code, name, desc, sem } = fields;
 
     return (
         <Flex>
-            {/* ... menu for edit/delete */}
+            <OptionsMenu />
 
-            {/* <TextField title="code" isEditing= /> -> required */}
+            <TextField required title="code" value={code} isEditing={isEditing} onChange={onChange} />
             {/* <TextField title="name*" isEditing= /> -> required */}
             {/* <TextField title="description" isEditing= /> -> required */}
 
@@ -17,6 +19,7 @@ const FieldsPane = ({ fields, isEditing }) => {
                 {/* <TextField title="code" isEditing= /> -> required */}
             </Flex>
 
+            {/* Cancel/Confirm buttons */}
 
         </Flex>
     );

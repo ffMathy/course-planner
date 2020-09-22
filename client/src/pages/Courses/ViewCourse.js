@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Flex } from "@chakra-ui/core";
-import CourseField from "./CourseField";
-import SaveCancelButtonSet from "./SaveCancelButtonSet";
+import CourseField from "./editables/CourseField";
+import SaveCancelButtonSet from "./editables/SaveCancelButtonSet";
 import OptionsMenu from "../../components/OptionsMenu";
 import RegulationTable from "./RegulationTable";
 
@@ -14,6 +14,7 @@ const FIELDS = {
     code: "courseCode",
     name: "name",
     desc: "description",
+    sem: "semester",
     pts: "points",
 };
 
@@ -22,6 +23,7 @@ const ViewCourse = ({ course, updateCourse, deleteCourse }) => {
     const [code, setCode] = useState("");
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
+    const [sem, setSem] = useState("");
     const [pts, setPts] = useState(0);
     const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false);
 
@@ -30,6 +32,7 @@ const ViewCourse = ({ course, updateCourse, deleteCourse }) => {
         setCode(course.courseCode);
         setName(course.name);
         setDesc(course.description);
+        setSem(course.semester);
         setPts(course.points);
     }, [course]);
 
@@ -46,6 +49,9 @@ const ViewCourse = ({ course, updateCourse, deleteCourse }) => {
             case FIELDS.desc:
                 setDesc(val);
                 return;
+            case FIELDS.sem:
+                setSem(val);
+                return;
             case FIELDS.pts:
                 setPts(val);
                 return;
@@ -59,6 +65,7 @@ const ViewCourse = ({ course, updateCourse, deleteCourse }) => {
         setCode(course.courseCode);
         setName(course.name);
         setDesc(course.description);
+        setSem(course.semester);
         setPts(course.points);
     };
 
@@ -67,6 +74,7 @@ const ViewCourse = ({ course, updateCourse, deleteCourse }) => {
         editedCourse[FIELDS.code] = code;
         editedCourse[FIELDS.name] = name;
         editedCourse[FIELDS.desc] = desc;
+        editedCourse[FIELDS.sem] = sem;
         editedCourse[FIELDS.pts] = pts;
 
         // TODO: show popup success message

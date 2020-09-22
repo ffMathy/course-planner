@@ -9,6 +9,7 @@ import ConfirmationDialog from "./ConfirmationDialog";
 import SearchSelect from "./SearchSelect";
 import SingleSelect from "./SingleSelect";
 import NavigationMenu from "./NavigationMenu";
+import OptionsMenu from "./OptionsMenu";
 
 export {
     AppConfiguration,
@@ -22,4 +23,5 @@ export {
     SingleSelect,
     ConfirmationDialog,
     NavigationMenu,
+    OptionsMenu,
 };
