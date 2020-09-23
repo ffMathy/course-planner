@@ -1,23 +1,27 @@
 import React from "react";
-import { Flex, Text, Input } from "@chakra-ui/core";
+import { Box, Text, FormControl, FormLabel, Input, Divider } from "@chakra-ui/core";
+import { colors as c } from "../../../colors";
 
-const TextField = ({ required = false, title, help = "", value, isEditing, onChange }) => {
+const TextField = ({ isRequired = false, title, value, isEditing, onChange }) => {
 
     return (
-        <Flex direction="row">
-            <Text>{title[0].toUpperCase() + title.substring(1)}{required && "*"}</Text>
+        <FormControl isRequired={isRequired}>
+            <FormLabel>{title[0].toUpperCase() + title.substring(1)}</FormLabel>
 
             {!isEditing
-                ?
-                <Text>
-                    {value}
-                </Text>
-                :
-                <Input overflowWrap="break-word">
+                ? (
+                    <Box>
+                        <Text>
+                            {value}
+                        </Text>
+                        <Divider borderColor={c.whiteGrey} />
+                    </Box>
+                ) : (
+                    <Input overflowWrap="break-word" placeholder={title} value={value} onChange={onChange} />
+                )}
+        </FormControl>
 
-                </Input>
-            }
-        </Flex>
+
     );
 }
 

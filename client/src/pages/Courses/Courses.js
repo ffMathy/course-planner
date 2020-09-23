@@ -6,6 +6,7 @@ import ViewCourse from "./ViewCourse";
 import useCourses from "./useCourses";
 import { colors as c } from "../../colors";
 import AddAllCourse from "./AddAllCourse";
+import CourseView from "./CourseView";
 
 const Courses = () => {
     const [currRow, setCurrRow] = useState("0");
@@ -91,8 +92,9 @@ const Courses = () => {
                 {addingCourse ? (
                     <CreateCourse prefillCourse={prefillCourse} />
                 ) : (
-                    <ViewCourse course={selectedCourse} updateCourse={updateCourse} deleteCourse={deleteCourse} />
-                )}
+                        // <ViewCourse course={selectedCourse} updateCourse={updateCourse} deleteCourse={deleteCourse} />
+                        <CourseView course={selectedCourse} isEditing={false} />
+                    )}
             </Flex>
         </Flex>
     );
