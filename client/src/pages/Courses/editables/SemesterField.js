@@ -4,14 +4,14 @@ import { colors as c } from "../../../colors";
 
 const semMapping = ["S1", "S2", "SS"];
 
-const SemsterField = ({ value, isEditing, onChange }) => {
+const SemesterField = ({ value, isEditing, onChange }) => {
     const [checkedSems, setCheckedSems] = useState([]);
 
     useEffect(() => {
         setCheckedSems([value.includes("S1"), value.includes("S2"), value.includes("SS")]);
     }, [value]);
 
-    const updateSem = i => {
+    const updateSem = (i) => {
         const sems = checkedSems;
         sems[i] = !sems[i]; // Check/uncheck the semester
 
@@ -23,31 +23,29 @@ const SemsterField = ({ value, isEditing, onChange }) => {
         }
 
         onChange("sem", semesters);
-    }
+    };
 
     return (
         <Flex direction="column">
-            <Text color={c.darkBlue} fontWeight="bold">Semester:</Text>
+            <Text color={c.darkBlue} fontWeight="bold">
+                Semester:
+            </Text>
 
-            {!isEditing
-                ? (
-                    <Text textAlign="center" fontSize="large">{value.join(", ")}</Text>
-                ) : (
-                    <Stack spacing={10} isInline>
-                        <Checkbox borderColor={c.lightBlue} isChecked={checkedSems[0]} onChange={e => updateSem(0)}>
-                            S1
+            {!isEditing ? (
+                <Text textAlign="center" fontSize="large">
+                    {value.join(", ")}
+                </Text>
+            ) : (
+                <Stack spacing={10} isInline>
+                    {semMapping.map((sem, idx) => (
+                        <Checkbox borderColor={c.lightBlue} isChecked={checkedSems[idx]} onChange={(e) => updateSem(idx)}>
+                            {sem}
                         </Checkbox>
-                        <Checkbox borderColor={c.lightBlue} isChecked={checkedSems[1]} onChange={e => updateSem(1)}>
-                            S2
-                        </Checkbox>
-                        <Checkbox borderColor={c.lightBlue} isChecked={checkedSems[2]} onChange={e => updateSem(2)}>
-                            SS
-                        </Checkbox>
-                    </Stack>
-                )}
-
+                    ))}
+                </Stack>
+            )}
         </Flex>
     );
-}
+};
 
-export default SemsterField;
+export default SemesterField;

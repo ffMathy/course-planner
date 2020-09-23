@@ -17,14 +17,14 @@ const Courses = () => {
     const { data, columns, createCourse, updateCourse, deleteCourse, createAllCoursesFromUniAPI, prefillCourse } = useCourses();
 
     useEffect(() => {
-        setSelectedCourse(isAddingCourse ? {} : (data[currRow] || {}));
+        setSelectedCourse(isAddingCourse ? {} : data[currRow] || {});
         setIsEditing(false);
     }, [data, currRow, isAddingCourse]);
 
     const cancelCourse = () => {
         setIsEditing(false);
         setIsAddingCourse(false);
-    }
+    };
 
     const saveCourse = (toSave) => {
         if (isAddingCourse) {
@@ -35,7 +35,7 @@ const Courses = () => {
         } else {
             updateCourse(toSave);
         }
-    }
+    };
 
     return (
         <Flex height="100vh" width="100%" direction="row" backgroundColor={c.whiteGrey}>
@@ -106,12 +106,18 @@ const Courses = () => {
             <Divider orientation="vertical" backgroundColor={c.iceBlue} width="2px" />
             {/* Right side of page */}
             <Flex height="100%" width="50%" direction="column">
-                {/* {addingCourse ? (
-                    <CreateCourse prefillCourse={prefillCourse} />
-                ) : ( */}
-                {/* // <ViewCourse course={selectedCourse} updateCourse={updateCourse} deleteCourse={deleteCourse} /> */}
-                <Button bg="red.500" onClick={() => setIsEditing(true)}>TEMPORARY EDIT BUTTON</Button>
-                <CourseView course={selectedCourse} isNew={isAddingCourse} isEditing={isEditing || isAddingCourse} onDelete={deleteCourse} cancelUpdateCourse={cancelCourse} updateCourse={saveCourse} prefillCourse={prefillCourse} />
+                <Button bg="red.500" onClick={() => setIsEditing(true)}>
+                    TEMPORARY EDIT BUTTON
+                </Button>
+                <CourseView
+                    course={selectedCourse}
+                    isNew={isAddingCourse}
+                    isEditing={isEditing || isAddingCourse}
+                    onDelete={deleteCourse}
+                    cancelUpdateCourse={cancelCourse}
+                    updateCourse={saveCourse}
+                    prefillCourse={prefillCourse}
+                />
             </Flex>
         </Flex>
     );

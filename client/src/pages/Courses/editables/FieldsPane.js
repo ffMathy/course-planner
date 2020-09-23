@@ -7,7 +7,7 @@ import PointsField from './PointsField';
 import SaveCancelButtonSet from "./SaveCancelButtonSet";
 import { colors as c } from "../../../colors";
 
-const FieldsPane = ({ code, name, desc, sem, pts, isNew, isEditing, onChange, onCancel, onSave, prefillCourse }) => {
+const FieldsPane = ({ code, name, desc, sem, pts, isNew, isEditing, onChange, onCancel, onSave, prefillCourse, isValidCourseCode }) => {
 
     return (
         <Flex direction="column" margin="5px" padding="10px" borderRadius="5px" bg={c.lightGrey} boxShadow="md">
@@ -35,7 +35,7 @@ const FieldsPane = ({ code, name, desc, sem, pts, isNew, isEditing, onChange, on
             <Flex direction="row" marginTop="30px">
                 {isEditing && <SaveCancelButtonSet isActive={code} onCancel={onCancel} onSave={onSave} />}
                 {isNew &&
-                    <Button width="250px" variantColor="blue" backgroundColor={c.lightBlue} onClick={prefillCourse} isDisabled={!code} _hover={!code && {}}>
+                    <Button width="250px" variantColor="blue" backgroundColor={c.lightBlue} onClick={prefillCourse} isDisabled={!code || !isValidCourseCode} _hover={!code && {}}>
                         Auto-Generate Course
                     </Button>}
             </Flex>

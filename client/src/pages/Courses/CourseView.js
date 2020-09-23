@@ -10,6 +10,8 @@ const fields = {
     pts: "points",
 };
 
+const validCourseCodeRegex = /^([A-Za-z])*(\s?)([1-9][0-9][0-9])([A-Za-z]{0,3})$/;
+
 const CourseView = ({ course, isNew, isEditing, onDelete, cancelUpdateCourse, updateCourse, prefillCourse }) => {
     const toast = useToast();
 
@@ -28,12 +30,17 @@ const CourseView = ({ course, isNew, isEditing, onDelete, cancelUpdateCourse, up
     };
 
     useEffect(() => {
-        setCode(course.courseCode || "");
-        setName(course.name || "");
-        setDesc(course.description || "");
-        setSem(course.semester || []);
-        setPts(course.points || 15);
+        const { points, semester, description, courseCode, name } = course;
+
+        setCode(courseCode || "");
+        setName(name || "");
+        setDesc(description || "");
+        setSem(semester || []);
+        setPts(points || 15);
+
     }, [course])
+
+    const isValidCourseCode = validCourseCodeRegex.test(code);
 
     const changeField = (field, value) => {
         setField[field](value);
@@ -86,6 +93,7 @@ const CourseView = ({ course, isNew, isEditing, onDelete, cancelUpdateCourse, up
                 onCancel={cancelUpdateCourse}
                 onSave={saveCourse}
                 prefillCourse={handlePrefill}
+                isValidCourseCode={isValidCourseCode}
             />
 
             {isNew
