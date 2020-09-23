@@ -12,23 +12,26 @@ const Courses = () => {
     const [currRow, setCurrRow] = useState("0");
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCourse, setSelectedCourse] = useState({});
-    const [addingCourse, setAddingCourse] = useState(false);
+    const [isAddingCourse, setIsAddingCourse] = useState(false);
     const [populateFromUniAPI, setPopulateFromUniAPI] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
 
     const { data, columns, createCourse, updateCourse, deleteCourse, createAllCoursesFromUniAPI, prefillCourse } = useCourses();
 
     useEffect(() => {
-        setSelectedCourse(addingCourse ? {} : (data[currRow] || {}));
-    }, [data, currRow, addingCourse]);
+        setSelectedCourse(isAddingCourse ? {} : (data[currRow] || {}));
+        setIsEditing(false);
+    }, [data, currRow, isAddingCourse]);
 
     const cancelCourse = () => {
-        setAddingCourse(false);
+        setIsEditing(false);
+        setIsAddingCourse(false);
     }
 
     const saveCourse = (toSave) => {
-        if (addingCourse) {
+        if (isAddingCourse) {
             createCourse(toSave);
-            setAddingCourse(false);
+            setIsAddingCourse(false);
             setCurrRow(currRow + 1);
             setSelectedCourse(toSave);
         } else {
@@ -57,7 +60,7 @@ const Courses = () => {
                             onClick={() => {
                                 setCurrRow();
                                 setSelectedCourse({});
-                                setAddingCourse(true);
+                                setIsAddingCourse(true);
                             }}
                         >
                             <Text textAlign="center" color={c.white}>
@@ -89,7 +92,7 @@ const Courses = () => {
                         data={data}
                         getRowProps={(row) => ({
                             onClick: () => {
-                                setAddingCourse(false);
+                                setIsAddingCourse(false);
                                 setCurrRow(row.id);
                             },
                             style: {
@@ -109,7 +112,8 @@ const Courses = () => {
                     <CreateCourse prefillCourse={prefillCourse} />
                 ) : ( */}
                 {/* // <ViewCourse course={selectedCourse} updateCourse={updateCourse} deleteCourse={deleteCourse} /> */}
-                <CourseView course={selectedCourse} isNew={addingCourse} isEditing={false || addingCourse} cancelUpdateCourse={cancelCourse} updateCourse={saveCourse} />
+                <Button onClick={() => setIsEditing(true)}>TEMPORARY EDIT BUTTON</Button>
+                <CourseView course={selectedCourse} isNew={isAddingCourse} isEditing={isEditing || isAddingCourse} cancelUpdateCourse={cancelCourse} updateCourse={saveCourse} />
                 {/* )} */}
             </Flex>
         </Flex>
