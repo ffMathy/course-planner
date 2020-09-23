@@ -137,7 +137,7 @@ exports[`<Courses /> 1`] = `
     className="css-mzeyh"
   >
     <button
-      className="css-c4fa1y"
+      className="css-101tavi"
       onClick={[Function]}
       type="button"
     >
@@ -271,6 +271,9 @@ exports[`<Courses /> 1`] = `
             </p>
           </div>
         </div>
+        <div
+          className="css-15ruxe8"
+        />
       </div>
       <div
         className="css-13v6rjs"
