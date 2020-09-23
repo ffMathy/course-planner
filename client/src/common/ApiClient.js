@@ -1,4 +1,4 @@
-const HOSTNAME = process.env.DOGGER_HOSTNAME || "localhost";
+const HOSTNAME = process.env.HOSTNAME || "localhost";
 const BACKEND_URL = "http://" + HOSTNAME + ":8080";
 
 const ApiClient = (endpoint, { body, ...customConfig } = {}) => {
