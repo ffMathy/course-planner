@@ -3,7 +3,7 @@ import { Flex } from "@chakra-ui/core";
 import CourseField from "./editables/CourseField";
 import SaveCancelButtonSet from "./editables/SaveCancelButtonSet";
 import OptionsMenu from "../../components/OptionsMenu";
-import RegulationTable from "./RegulationTable";
+import RegulationTable from "./editables/RegulationTable";
 
 const TYPES = {
     simple: "simple",

@@ -71,8 +71,8 @@ const CourseView = ({ course, isNew, isEditing, onEdit, onDelete, cancelUpdateCo
                         <Text fontStyle="italic">First Create the course to add requirements</Text>
                     </Flex>
                 ) : (
-                    <Flex>
-                        {/* Requirments Pane */}
+                    <Flex marginTop="15px">
+                        <RequirementsPane course={course} updateCourse={updateCourse} />
                     </Flex>
                 )}
         </Flex>
