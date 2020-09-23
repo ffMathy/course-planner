@@ -111,7 +111,7 @@ const Courses = () => {
                 ) : ( */}
                 {/* // <ViewCourse course={selectedCourse} updateCourse={updateCourse} deleteCourse={deleteCourse} /> */}
                 <Button bg="red.500" onClick={() => setIsEditing(true)}>TEMPORARY EDIT BUTTON</Button>
-                <CourseView course={selectedCourse} isNew={isAddingCourse} isEditing={isEditing || isAddingCourse} onDelete={deleteCourse} cancelUpdateCourse={cancelCourse} updateCourse={saveCourse} />
+                <CourseView course={selectedCourse} isNew={isAddingCourse} isEditing={isEditing || isAddingCourse} onDelete={deleteCourse} cancelUpdateCourse={cancelCourse} updateCourse={saveCourse} prefillCourse={prefillCourse} />
             </Flex>
         </Flex>
     );

@@ -5,7 +5,7 @@ import { colors as c } from "../../../colors";
 const SaveCancelButtonSet = ({ onCancel, onSave, isActive }) => {
 
     return (
-        <Flex width="100%" marginTop="30px" direction="row" justifyContent="center">
+        <Flex width="100%" direction="row" justifyContent="center">
             <Button width="65px"
                 marginRight="10px"
                 color={c.lightBlue}

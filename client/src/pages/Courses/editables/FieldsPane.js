@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Text } from '@chakra-ui/core';
+import { Button, Flex, Text } from '@chakra-ui/core';
 import { OptionsMenu } from "../../../components"
 import TextField from './TextField';
 import SemesterField from './SemesterField';
@@ -7,13 +7,13 @@ import PointsField from './PointsField';
 import SaveCancelButtonSet from "./SaveCancelButtonSet";
 import { colors as c } from "../../../colors";
 
-const FieldsPane = ({ code, name, desc, sem, pts, isNew, isEditing, onChange, onCancel, onSave }) => {
+const FieldsPane = ({ code, name, desc, sem, pts, isNew, isEditing, onChange, onCancel, onSave, prefillCourse }) => {
 
     return (
         <Flex direction="column" margin="5px" padding="10px" borderRadius="5px" bg={c.lightGrey} boxShadow="md">
             {isNew
                 ? (
-                    <Flex justifyContent="center">
+                    <Flex direction="column" justifyContent="center">
                         <Text fontSize="50px" fontWeight="bold" color={c.darkBlue}>Create a new course</Text>
                     </Flex>
                 ) : (
@@ -32,8 +32,13 @@ const FieldsPane = ({ code, name, desc, sem, pts, isNew, isEditing, onChange, on
                 <PointsField value={pts} isEditing={isEditing} onChange={onChange} />
             </Flex>
 
-            { isEditing && <SaveCancelButtonSet isActive={code} onCancel={onCancel} onSave={onSave} />}
-
+            <Flex direction="row" marginTop="30px">
+                {isEditing && <SaveCancelButtonSet isActive={code} onCancel={onCancel} onSave={onSave} />}
+                {isNew &&
+                    <Button width="250px" variantColor="blue" backgroundColor={c.lightBlue} onClick={prefillCourse} isDisabled={!code} _hover={!code && {}}>
+                        Auto-Generate Course
+                    </Button>}
+            </Flex>
         </Flex >
     );
 }

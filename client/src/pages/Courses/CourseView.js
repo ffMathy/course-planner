@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Flex, Text } from "@chakra-ui/core";
+import { Flex, Text, useToast } from "@chakra-ui/core";
 import { FieldsPane, RequirementsPane } from "./editables";
 
 const fields = {
@@ -10,7 +10,9 @@ const fields = {
     pts: "points",
 };
 
-const CourseView = ({ course, isNew, isEditing, onDelete, cancelUpdateCourse, updateCourse }) => {
+const CourseView = ({ course, isNew, isEditing, onDelete, cancelUpdateCourse, updateCourse, prefillCourse }) => {
+    const toast = useToast();
+
     const [code, setCode] = useState("");
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
@@ -48,6 +50,28 @@ const CourseView = ({ course, isNew, isEditing, onDelete, cancelUpdateCourse, up
         updateCourse(editedCourse);
     }
 
+    const handlePrefill = () => {
+        const courseCodeArr = code.split(/(\d+)/).filter((e) => e !== "");
+        const subject = courseCodeArr[0];
+        const courseCode = courseCodeArr.length === 2 ? courseCodeArr[1] : `${courseCodeArr[1]}${courseCodeArr[2]}`;
+
+        const toastBase = {
+            title: `Error 404 Course Code Not Found`,
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+        };
+
+        prefillCourse(subject.trim(), courseCode.trim())
+            .then((res) =>
+                updateCourse(res)
+            )
+            .then((res) =>
+                toast({ title: "Course created", description: `Successfully auto-generated ${code}`, status: "success" })
+            )
+            .catch((e) => toast({ ...toastBase, description: `Course Code: ${code} could not be found on the UoA API` }));
+    };
+
     return (
         <Flex direction="column">
             <FieldsPane
@@ -61,6 +85,7 @@ const CourseView = ({ course, isNew, isEditing, onDelete, cancelUpdateCourse, up
                 onChange={changeField}
                 onCancel={cancelUpdateCourse}
                 onSave={saveCourse}
+                prefillCourse={handlePrefill}
             />
 
             {isNew

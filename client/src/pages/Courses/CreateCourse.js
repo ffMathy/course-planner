@@ -54,25 +54,6 @@ const CreateCourse = ({ prefillCourse }) => {
         });
     };
 
-    const handlePrefill = () => {
-        const courseCodeArr = course.courseCode.split(/(\d+)/).filter((e) => e !== "");
-        const subject = courseCodeArr[0];
-        const courseCode = courseCodeArr.length === 2 ? courseCodeArr[1] : `${courseCodeArr[1]}${courseCodeArr[2]}`;
-
-        const toastBase = {
-            title: `Error 404 Course Code Not Found`,
-            status: "error",
-            duration: 9000,
-            isClosable: true,
-        };
-
-        prefillCourse(subject.trim(), courseCode.trim())
-            .then((res) => {
-                setCourse(res);
-            })
-            .catch((e) => toast({ ...toastBase, description: `Course Code: ${course.courseCode} could not be found on the UoA API` }));
-    };
-
     // TODO: Confirm save to DB
     return (
         <Flex width="100%" justify="left" marginTop="20px" p={4} direction="column">
