@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import { Flex } from '@chakra-ui/core';
+import { Flex, Text } from '@chakra-ui/core';
 import { OptionsMenu } from "../../../components"
 import TextField from './TextField';
+import SemesterField from './SemesterField';
+import PointsField from './PointsField';
 import { colors as c } from "../../../colors";
 
 const FieldsPane = ({ code, name, desc, sem, pts, isEditing, onEdit, onDelete, onChange }) => {
@@ -16,9 +18,9 @@ const FieldsPane = ({ code, name, desc, sem, pts, isEditing, onEdit, onDelete, o
             <TextField title="name" value={name} isEditing={isEditing} onChange={onChange} />
             <TextField title="description" value={desc} isEditing={isEditing} onChange={onChange} />
 
-            <Flex direction="row">
-                {/* <PointsField title="code" isEditing= /> -> required */}
-                {/* <TextField title="code" isEditing= /> -> required */}
+            <Flex justify="space-around" marginTop="5px">
+                <SemesterField value={sem} isEditing={isEditing} onChange={onChange} />
+                <PointsField value={pts} isEditing={isEditing} onChange={onChange} />
             </Flex>
 
             {/* Cancel/Confirm buttons */}

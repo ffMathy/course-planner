@@ -1,11 +1,26 @@
 import React from "react";
-import { Flex } from "@chakra-ui/core";
+import { Flex, Box, Text, Select } from "@chakra-ui/core";
 
-const PointsField = ({ isEditing }) => {
+const points = [15, 20, 30];
+
+const PointsField = ({ value, isEditing, onChange }) => {
 
     return (
-        <Flex>
+        <Flex direction="column">
+            <Text fontWeight="bold">Points:</Text>
 
+            {!isEditing
+                ? (
+                    <Text textAlign="center" fontSize="large">{value}</Text>
+                ) : (
+                    <Select value={value} onChange={onChange}>
+                        {points.map((val, i) => (
+                            <option value={val} key={i}>
+                                {val} points
+                            </option>
+                        ))}
+                    </Select>
+                )}
         </Flex>
     );
 }

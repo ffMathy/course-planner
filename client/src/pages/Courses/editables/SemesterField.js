@@ -1,10 +1,31 @@
 import React from "react";
-import { Flex } from "@chakra-ui/core";
+import { Flex, Text, Stack, Checkbox } from "@chakra-ui/core";
+import { colors as c } from "../../../colors";
 
-const SemsterField = ({ isEditing }) => {
+const temp = ["monkey", "business", "S2"];
+
+const SemsterField = ({ value, isEditing, onChange }) => {
 
     return (
-        <Flex>
+        <Flex direction="column">
+            <Text fontWeight="bold">Semester:</Text>
+
+            {!isEditing
+                ? (
+                    <Text textAlign="center" fontSize="large">{temp.join(", ")}</Text>
+                ) : (
+                    <Stack spacing={10} isInline>
+                        <Checkbox borderColor={c.lightBlue} isChecked={temp.includes("S1")}>
+                            S1
+                        </Checkbox>
+                        <Checkbox borderColor={c.lightBlue} isChecked={temp.includes("S2")}>
+                            S2
+                        </Checkbox>
+                        <Checkbox borderColor={c.lightBlue} isChecked={temp.includes("SS")}>
+                            SS
+                        </Checkbox>
+                    </Stack>
+                )}
 
         </Flex>
     );

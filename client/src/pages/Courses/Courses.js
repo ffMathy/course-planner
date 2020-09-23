@@ -93,7 +93,7 @@ const Courses = () => {
                     <CreateCourse prefillCourse={prefillCourse} />
                 ) : (
                         // <ViewCourse course={selectedCourse} updateCourse={updateCourse} deleteCourse={deleteCourse} />
-                        <CourseView course={selectedCourse} isEditing={false} />
+                        <CourseView course={selectedCourse} isEditing={true} />
                     )}
             </Flex>
         </Flex>

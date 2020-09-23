@@ -19,7 +19,17 @@ const CourseView = ({ course, isEditing, onEdit, onDelete, onChange }) => {
 
     return (
         <Flex direction="column">
-            <FieldsPane code={code} name={name} desc={desc} sem={sem} pts={pts} isEditing={isEditing} edit={onEdit} delete={onDelete} onChange={onChange} />
+            <FieldsPane
+                code={code}
+                name={name}
+                desc={desc}
+                sem={sem}
+                pts={pts}
+                isEditing={isEditing}
+                edit={onEdit}
+                delete={onDelete}
+                onChange={onChange}
+            />
             {/* requirements pane */}
         </Flex>
     );
