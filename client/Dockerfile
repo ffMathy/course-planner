@@ -1,5 +1,8 @@
 FROM node:14-alpine
 
+ARG DOGGER_HOSTNAME=
+ENV DOGGER_HOSTNAME=${DOGGER_HOSTNAME}
+
 WORKDIR /app
 COPY package.json .
 
