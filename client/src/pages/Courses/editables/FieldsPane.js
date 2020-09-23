@@ -23,9 +23,9 @@ const FieldsPane = ({ code, name, desc, sem, pts, isNew, isEditing, onEdit, onDe
                 )
             }
 
-            <TextField isRequired title="code" value={code} isEditing={isEditing} onChange={onChange} />
-            <TextField title="name" value={name} isEditing={isEditing} onChange={onChange} />
-            <TextField title="description" value={desc} isEditing={isEditing} onChange={onChange} />
+            <TextField isRequired name="code" title="code" value={code} isEditing={isEditing} onChange={onChange} />
+            <TextField name="name" title="name" value={name} isEditing={isEditing} onChange={onChange} />
+            <TextField name="desc" title="description" value={desc} isEditing={isEditing} onChange={onChange} />
 
             <Flex justify="space-around" marginTop="15px">
                 <SemesterField value={sem} isEditing={isEditing} onChange={onChange} />

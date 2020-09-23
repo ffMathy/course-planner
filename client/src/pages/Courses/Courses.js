@@ -26,7 +26,14 @@ const Courses = () => {
     }
 
     const saveCourse = (toSave) => {
-        addingCourse ? createCourse(toSave) : updateCourse(toSave);
+        if (addingCourse) {
+            createCourse(toSave);
+            setAddingCourse(false);
+            setCurrRow(currRow + 1);
+            setSelectedCourse(toSave);
+        } else {
+            updateCourse(toSave);
+        }
     }
 
     return (
@@ -102,7 +109,7 @@ const Courses = () => {
                     <CreateCourse prefillCourse={prefillCourse} />
                 ) : ( */}
                 {/* // <ViewCourse course={selectedCourse} updateCourse={updateCourse} deleteCourse={deleteCourse} /> */}
-                <CourseView course={selectedCourse} isNew={addingCourse} isEditing={true || addingCourse} cancelUpdateCourse={cancelCourse} updateCourse={saveCourse} />
+                <CourseView course={selectedCourse} isNew={addingCourse} isEditing={false || addingCourse} cancelUpdateCourse={cancelCourse} updateCourse={saveCourse} />
                 {/* )} */}
             </Flex>
         </Flex>

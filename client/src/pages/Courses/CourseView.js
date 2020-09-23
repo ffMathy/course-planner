@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Flex, Text } from "@chakra-ui/core";
 import { FieldsPane, RequirementsPane } from "./editables";
 
-
+const fields = {
+    code: "courseCode",
+    name: "name",
+    desc: "description",
+    sem: "semester",
+    pts: "points",
+};
 
 const CourseView = ({ course, isNew, isEditing, onEdit, onDelete, cancelUpdateCourse, updateCourse }) => {
     const [code, setCode] = useState("");
@@ -31,12 +37,15 @@ const CourseView = ({ course, isNew, isEditing, onEdit, onDelete, cancelUpdateCo
         setField[field](value);
     }
 
-    const cancelCourse = () => {
-
-    }
-
     const saveCourse = () => {
+        const editedCourse = { ...course };
+        editedCourse[fields.code] = code;
+        editedCourse[fields.name] = name;
+        editedCourse[fields.desc] = desc;
+        editedCourse[fields.sem] = sem;
+        editedCourse[fields.pts] = pts;
 
+        updateCourse(editedCourse);
     }
 
     return (
@@ -52,7 +61,7 @@ const CourseView = ({ course, isNew, isEditing, onEdit, onDelete, cancelUpdateCo
                 onEdit={onEdit}
                 onDelete={onDelete}
                 onChange={changeField}
-                onCancel={cancelCourse}
+                onCancel={cancelUpdateCourse}
                 onSave={saveCourse}
             />
 

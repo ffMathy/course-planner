@@ -14,7 +14,7 @@ const PointsField = ({ value, isEditing, onChange }) => {
                 ? (
                     <Text textAlign="center" fontSize="large">{value}</Text>
                 ) : (
-                    <Select value={value} onChange={onChange}>
+                    <Select value={value} onChange={e => onChange("pts", e.target.value)}>
                         {points.map((val, i) => (
                             <option value={val} key={i}>
                                 {val} points
