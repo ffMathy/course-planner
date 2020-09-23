@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Flex, Text, Button, Divider } from "@chakra-ui/core";
 import { Table, SearchBar, NavigationMenu } from "../../components";
-import CreateCourse from "./CreateCourse";
-import ViewCourse from "./ViewCourse";
 import useCourses from "./useCourses";
 import { colors as c } from "../../colors";
 import AddAllCourse from "./AddAllCourse";
@@ -112,9 +110,8 @@ const Courses = () => {
                     <CreateCourse prefillCourse={prefillCourse} />
                 ) : ( */}
                 {/* // <ViewCourse course={selectedCourse} updateCourse={updateCourse} deleteCourse={deleteCourse} /> */}
-                <Button onClick={() => setIsEditing(true)}>TEMPORARY EDIT BUTTON</Button>
-                <CourseView course={selectedCourse} isNew={isAddingCourse} isEditing={isEditing || isAddingCourse} cancelUpdateCourse={cancelCourse} updateCourse={saveCourse} />
-                {/* )} */}
+                <Button bg="red.500" onClick={() => setIsEditing(true)}>TEMPORARY EDIT BUTTON</Button>
+                <CourseView course={selectedCourse} isNew={isAddingCourse} isEditing={isEditing || isAddingCourse} onDelete={deleteCourse} cancelUpdateCourse={cancelCourse} updateCourse={saveCourse} />
             </Flex>
         </Flex>
     );

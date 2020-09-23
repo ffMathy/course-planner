@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Flex, Text } from '@chakra-ui/core';
 import { OptionsMenu } from "../../../components"
 import TextField from './TextField';
@@ -7,7 +7,7 @@ import PointsField from './PointsField';
 import SaveCancelButtonSet from "./SaveCancelButtonSet";
 import { colors as c } from "../../../colors";
 
-const FieldsPane = ({ code, name, desc, sem, pts, isNew, isEditing, onEdit, onDelete, onChange, onCancel, onSave }) => {
+const FieldsPane = ({ code, name, desc, sem, pts, isNew, isEditing, onChange, onCancel, onSave }) => {
 
     return (
         <Flex direction="column" margin="5px" padding="10px" borderRadius="5px" bg={c.lightGrey} boxShadow="md">

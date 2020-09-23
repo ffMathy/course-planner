@@ -3,7 +3,7 @@ import { Flex, Button, Text, useToast } from "@chakra-ui/core";
 import { colors as c } from "../../colors";
 import CourseField from "./editables/CourseField";
 import SaveCancelButtonSet from "./editables/SaveCancelButtonSet";
-import RegulationTable from "./editables/RegulationTable";
+import RegulationTable from "./RegulationTable";
 
 const TYPES = {
     simple: "simple",

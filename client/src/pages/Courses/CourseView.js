@@ -10,7 +10,7 @@ const fields = {
     pts: "points",
 };
 
-const CourseView = ({ course, isNew, isEditing, onEdit, onDelete, cancelUpdateCourse, updateCourse }) => {
+const CourseView = ({ course, isNew, isEditing, onDelete, cancelUpdateCourse, updateCourse }) => {
     const [code, setCode] = useState("");
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
@@ -58,8 +58,6 @@ const CourseView = ({ course, isNew, isEditing, onEdit, onDelete, cancelUpdateCo
                 pts={pts}
                 isNew={isNew}
                 isEditing={isEditing}
-                onEdit={onEdit}
-                onDelete={onDelete}
                 onChange={changeField}
                 onCancel={cancelUpdateCourse}
                 onSave={saveCourse}

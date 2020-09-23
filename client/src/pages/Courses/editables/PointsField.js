@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Text, Select } from "@chakra-ui/core";
+import { Flex, Text, Select } from "@chakra-ui/core";
 import { colors as c } from "../../../colors";
 
 const points = [15, 20, 30];
