@@ -1,5 +1,6 @@
 import React from "react";
 import { Flex, Box, Text, Select } from "@chakra-ui/core";
+import { colors as c } from "../../../colors";
 
 const points = [15, 20, 30];
 
@@ -7,7 +8,7 @@ const PointsField = ({ value, isEditing, onChange }) => {
 
     return (
         <Flex direction="column">
-            <Text fontWeight="bold">Points:</Text>
+            <Text color={c.darkBlue} fontWeight="bold">Points:</Text>
 
             {!isEditing
                 ? (

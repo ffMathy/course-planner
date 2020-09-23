@@ -8,7 +8,7 @@ const SemsterField = ({ value, isEditing, onChange }) => {
 
     return (
         <Flex direction="column">
-            <Text fontWeight="bold">Semester:</Text>
+            <Text color={c.darkBlue} fontWeight="bold">Semester:</Text>
 
             {!isEditing
                 ? (

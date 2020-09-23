@@ -1,15 +1,29 @@
 import React from "react";
 import { Flex, Button } from "@chakra-ui/core";
+import { colors as c } from "../../../colors";
 
 const SaveCancelButtonSet = ({ onCancel, onSave, isActive }) => {
-    const isDisabled = !isActive;
 
     return (
-        <Flex width="100%" padding="5" justify="center" direction="row">
-            <Button isDisabled={isDisabled} variantColor="red" onClick={onCancel}>
+        <Flex width="100%" marginTop="30px" direction="row" justifyContent="center">
+            <Button width="65px"
+                marginRight="10px"
+                color={c.lightBlue}
+                bg={c.darkBlue}
+                _hover={{ bg: c.red, color: c.white }}
+                onClick={onCancel}
+            >
                 Cancel
             </Button>
-            <Button isDisabled={isDisabled} variantColor="green" onClick={onSave}>
+
+            <Button width="65px"
+                marginLeft="10px"
+                color={c.lightBlue}
+                bg={c.darkBlue}
+                _hover={{ bg: c.green, color: c.white }}
+                isDisabled={!isActive}
+                onClick={onSave}
+            >
                 Save
             </Button>
         </Flex>
