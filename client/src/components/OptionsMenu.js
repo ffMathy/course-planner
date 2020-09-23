@@ -1,10 +1,9 @@
 import React from "react";
 import { Menu, MenuButton, MenuList, MenuGroup, MenuItem, Icon, Text, Flex, IconButton } from "@chakra-ui/core";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
-import ConfirmationDialog from "./ConfirmationDialog";
 import { colors as c } from "../colors";
 
-const OptionsMenu = ({ item, itemType, setOpenConfirmationDialog, openConfirmationDialog, confirm, hasEdit, onEdit }) => {
+const OptionsMenu = ({ onDelete, confirm, hasEdit, onEdit }) => {
     return (
         <Flex>
             <Menu>
@@ -22,7 +21,7 @@ const OptionsMenu = ({ item, itemType, setOpenConfirmationDialog, openConfirmati
                         </MenuButton>
                         <MenuList placement="bottom-end" minWidth="160px">
                             <MenuGroup>
-                                <MenuItem onClick={() => setOpenConfirmationDialog(true)}>
+                                <MenuItem onClick={onDelete}>
                                     <Icon name="delete" mr={3} color={c.red} />
                                     <Text color={c.red}>Delete</Text>
                                 </MenuItem>
@@ -37,14 +36,6 @@ const OptionsMenu = ({ item, itemType, setOpenConfirmationDialog, openConfirmati
                     </React.Fragment>
                 )}
             </Menu>
-            <ConfirmationDialog
-                item={item}
-                itemType={itemType}
-                action={"Delete"}
-                isOpen={openConfirmationDialog}
-                onClose={() => setOpenConfirmationDialog(false)}
-                confirm={confirm}
-            />
         </Flex>
     );
 };
