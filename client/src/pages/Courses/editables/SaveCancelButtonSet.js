@@ -20,7 +20,7 @@ const SaveCancelButtonSet = ({ onCancel, onSave, isActive }) => {
                 marginLeft="10px"
                 color={c.lightBlue}
                 bg={c.darkBlue}
-                _hover={{ bg: c.green, color: c.white }}
+                _hover={isActive && { bg: c.green, color: c.white }}
                 isDisabled={!isActive}
                 onClick={onSave}
             >

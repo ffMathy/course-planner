@@ -15,11 +15,19 @@ const Courses = () => {
     const [addingCourse, setAddingCourse] = useState(false);
     const [populateFromUniAPI, setPopulateFromUniAPI] = useState(false);
 
-    const { data, columns, updateCourse, deleteCourse, createAllCoursesFromUniAPI, prefillCourse } = useCourses();
+    const { data, columns, createCourse, updateCourse, deleteCourse, createAllCoursesFromUniAPI, prefillCourse } = useCourses();
 
     useEffect(() => {
-        setSelectedCourse(data[currRow] || {});
-    }, [data, currRow]);
+        setSelectedCourse(addingCourse ? {} : (data[currRow] || {}));
+    }, [data, currRow, addingCourse]);
+
+    const cancelCourse = () => {
+        setAddingCourse(false);
+    }
+
+    const saveCourse = (toSave) => {
+        addingCourse ? createCourse(toSave) : updateCourse(toSave);
+    }
 
     return (
         <Flex height="100vh" width="100%" direction="row" backgroundColor={c.whiteGrey}>
@@ -41,6 +49,7 @@ const Courses = () => {
                             backgroundColor={c.lightBlue}
                             onClick={() => {
                                 setCurrRow();
+                                setSelectedCourse({});
                                 setAddingCourse(true);
                             }}
                         >
@@ -89,12 +98,12 @@ const Courses = () => {
             <Divider orientation="vertical" backgroundColor={c.iceBlue} width="2px" />
             {/* Right side of page */}
             <Flex height="100%" width="50%" direction="column">
-                {addingCourse ? (
+                {/* {addingCourse ? (
                     <CreateCourse prefillCourse={prefillCourse} />
-                ) : (
-                        // <ViewCourse course={selectedCourse} updateCourse={updateCourse} deleteCourse={deleteCourse} />
-                        <CourseView course={selectedCourse} isEditing={false} />
-                    )}
+                ) : ( */}
+                {/* // <ViewCourse course={selectedCourse} updateCourse={updateCourse} deleteCourse={deleteCourse} /> */}
+                <CourseView course={selectedCourse} isNew={addingCourse} isEditing={true || addingCourse} cancelUpdateCourse={cancelCourse} updateCourse={saveCourse} />
+                {/* )} */}
             </Flex>
         </Flex>
     );
