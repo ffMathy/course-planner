@@ -1,4 +1,6 @@
-const HOSTNAME = process.env.HOSTNAME || "localhost";
+console.log(process.env);
+
+const HOSTNAME = process.env.REACT_APP_HOSTNAME || "localhost";
 const BACKEND_URL = "http://" + HOSTNAME + ":8080";
 
 const ApiClient = (endpoint, { body, ...customConfig } = {}) => {
