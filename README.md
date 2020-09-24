@@ -2,6 +2,7 @@
 
 <details><summary>  Setting up the development environment for MacOS and Linux </summary>
 <p>
+  
 
 Prerequisities: Docker
 

@@ -1,4 +1,7 @@
-const BACKEND_URL = "http://localhost:8080";
+console.log(process.env);
+
+const HOSTNAME = process.env.REACT_APP_HOSTNAME || "localhost";
+const BACKEND_URL = "http://" + HOSTNAME + ":8080";
 
 const ApiClient = (endpoint, { body, ...customConfig } = {}) => {
     const headers = { "content-type": "application/json" };
