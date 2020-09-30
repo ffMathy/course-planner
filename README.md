@@ -5,6 +5,7 @@
 
 Prerequisities: Docker
 
+
 1. Install [Docker Desktop](https://docs.docker.com/docker-for-mac/install/)
 2. Start Docker desktop
 3. Navigate to base repository `course-planner`
